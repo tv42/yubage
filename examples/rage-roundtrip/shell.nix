@@ -14,6 +14,20 @@ let
     };
 
     cargoSha256 = "1iirf4w7fnqvjml2ijahvsplqb5n6hqlfc7ndf0klj7km5b1s2ly";
+
+    # Workaround a build failure that started happening by disabling
+    # doctests. No idea why the normal build still works, what's the
+    # difference.
+    #
+    #    Doc-tests age
+    # error[E0433]: failed to resolve: could not find `utils` in `rust_embed`
+    #  --> /build/source/age/src/i18n.rs:9:10
+    #   |
+    # 9 | #[derive(RustEmbed)]
+    #   |          ^^^^^^^^^ could not find `utils` in `rust_embed`
+    #   |
+    #   = note: this error originates in a derive macro (in Nightly builds, run with -Z macro-backtrace for more info)
+    doCheck = false;
   };
 in
 mkShell {
