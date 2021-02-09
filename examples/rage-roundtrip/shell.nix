@@ -29,14 +29,13 @@ let
     #   = note: this error originates in a derive macro (in Nightly builds, run with -Z macro-backtrace for more info)
     doCheck = false;
   };
-in
-mkShell {
+in mkShell {
   buildInputs = [
     pinentry-gtk2
     rage
 
     pcsclite
-    pkg-config 
+    pkg-config
     go
 
     killall
