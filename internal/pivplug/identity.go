@@ -182,7 +182,9 @@ loop:
 
 			fileKey, err := unwrapKey(sharedSecret, recip.EphCompressed, pivCompressed, recip.WrappedFileKey)
 			if err != nil {
-				return fmt.Errorf("aead decrypt: %v", err)
+				debugf("aead decrypt: %v", err)
+				_ = err
+				continue
 			}
 
 			if err := conn.WriteStanza(&ageplugin.Stanza{
